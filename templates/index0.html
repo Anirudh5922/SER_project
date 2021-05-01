@@ -13,58 +13,42 @@
 	<div class="container">
   <div class="jumbotron" style="background-color:#0020C2">
 		<center>
-		<a href="http://localhost:5000/" class="btn btn-primary">
     <h1 style="color:white;">Speech Emotion Recognition</h1>
-	  </a>
-   </center>
+</center>
   </div>
 </div>
 <br>
 
+<div class="row">
+<div class="col">
 <div class="container">
 <div class="jumbotron" style="background-color:#3090C7">
-	<center>
-	{% if value!="No Audio" %}
-	 <img src="{{url_for('static', filename=value+'.gif')}}" style="width:80%;height:50%;">
-	{% else %}
-  <img src="{{url_for('static', filename=value+'.jpg')}}" style="width:80%;height:50%;">
-  {% endif %}
-</center>
+	<div class="card" style="width: 40rem;">
+	  <img class="card-img-top" src="{{url_for('static', filename='English.gif')}}" alt="Card image cap">
+	  <div class="card-body">
+	    <h4 class="card-title">English</h4>
+	    <p class="card-text">To know the emotion of speech recorded in English language.</p>
+	    <a href="http://localhost:5000/results/English" class="btn btn-primary">Found Emotion</a>
+	  </div>
+	</div>
 </div>
 </div>
-
-<br>
-	<center>
-	{% if l=="English" %}
-	 <form action = "http://localhost:5000/results/English" method = "POST"
-			enctype = "multipart/form-data">
-	{% else %}
-	<form action = "http://localhost:5000/results/Hindi" method = "POST"
-		enctype = "multipart/form-data">
-	{% endif %}
-			<input type = "file" name = "file" />
-			<input type = "submit" class="btn btn-success" name='Upload' value='Upload' onclick="$('#loading').show();"/>
-	 </form>
- <div id="loading" style="display:none;"><br><img src="{{url_for('static', filename='load.gif')}}" alt="" /></div>
-	 <br>
-	 <h2 style="color:white;">
-	 {{value}}
- </h2>
-
- {% if value!="No Audio" %}
-	 <br>
-	 <audio controls>
-    <source src="{{ url_for("static", filename = "audio/"+f) }}" type="audio/wav">
-   </audio>
- {% endif %}
- <br>
- <br>
- <script>
-function myFunction() {
-   var element = document.getElementById("myDIV");
-   element.classList.toggle("mystyle");
-}
-</script>
+</div>
+<div class="col">
+	<div class="container">
+	<div class="jumbotron" style="background-color:#3090C7">
+		<div class="card" style="width: 40rem;">
+		  <img class="card-img-top" src="{{url_for('static', filename='Hindi.gif')}}" alt="Card image cap">
+		  <div class="card-body">
+		    <h4 class="card-title">Hindi</h4>
+		    <p class="card-text">To know the emotion of speech recorded in English language.</p>
+		    <a href="http://localhost:5000/results/Hindi" class="btn btn-primary">Found Emotion</a>
+		  </div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
 	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
