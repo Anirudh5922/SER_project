@@ -28,7 +28,7 @@ def results(lang):
     and predict the emotion using the saved binary model
     """
     if not os.path.isdir("./static/audio"):
-        os.mkdir("static/audio")
+        os.mkdir("./static/audio")
     if request.method == 'GET':
         return render_template('index.html', value="No Audio",f="",l=lang)
     if request.method == 'POST':
@@ -37,6 +37,7 @@ def results(lang):
             wav_file_pre  = os.listdir("./static/audio")[0]
             wav_file_pre = f"{os.getcwd()}\\static\\audio\\{wav_file_pre}"
             os.remove(wav_file_pre)
+
           f = request.files['file']
           filename = secure_filename(f.filename)
           f.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
@@ -44,8 +45,9 @@ def results(lang):
         except:
           return render_template('index.html', value="No Audio",f="",l=lang)
 
-    wav_file_pre  = os.listdir("./static/audio")[0]
-    wav_file_pre = f"{os.getcwd()}\\static\\audio\\{wav_file_pre}"
+    wav_file_name  = os.listdir("./static/audio")[0]
+    wav_file_pre = f"{os.getcwd()}\\static\\audio\\{wav_file_name}"
+
     wav_file = convert(wav_file_pre)
     check,sr = librosa.load(wav_file_pre ,res_type='kaiser_fast')
     print(wav_file_pre)
