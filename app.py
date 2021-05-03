@@ -5,7 +5,6 @@ import librosa
 import pickle
 import os
 import keras
-import tensorflow as tf
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
@@ -15,6 +14,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = "./static/audio"
 
 ## Route for home page
+
 @app.route('/')
 def home():
     return render_template('index0.html')
